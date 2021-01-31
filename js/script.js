@@ -15,6 +15,5 @@ console.log(result);
 let raising = result ** 3;
 console.log(raising);
 
-
 // Вывести на экран первые 2 цифры полученного числа
 console.log(raising.toString().substr(0,2));
