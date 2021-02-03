@@ -1,19 +1,37 @@
-let num = 266219;
+let lang = 'ru';
 
-//переводим в string.
-num = '266219';
-
-//задаем переменную для начала умножения при первом проходе цикла 
-let result = 1;
-
-for(let i=0; i < num.length; i++){
-  result = result * num[i];
+if (lang === 'ru') {
+    console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
+} else if (lang === 'en') {
+    console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+} else {
+    console.log('Непредвиденное значение!');
 }
-console.log(result);
 
-//возводим результат в степень 
-let raising = result ** 3;
-console.log(raising);
+switch (lang) {
+    case 'ru':
+        console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
+        break;
+    case 'en':
+        console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+        break;
+    default:
+        console.log('Непредвиденное значение!');
+}
 
-// Вывести на экран первые 2 цифры полученного числа
-console.log(raising.toString().substr(0,2));
+let langArr = [];
+langArr.ru = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+langArr.en = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+console.log(langArr[lang]);
+
+const langArray = {
+    ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+    en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+};
+console.log(langArray[lang]);
+
+const namePerson = '';
+
+console.log((namePerson === 'Артем') ? 'директор' :
+    (namePerson === 'Максим') ? 'преподаватель' :
+    'студент');
