@@ -1,37 +1,21 @@
-let lang = 'ru';
+'use strict';
 
-if (lang === 'ru') {
-    console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
-} else if (lang === 'en') {
-    console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-} else {
-    console.log('Непредвиденное значение!');
+function foo(arg) {
+    let result = '...';
+    if (typeof arg === 'string'){
+       const maxLength = 30;
+       const string = arg.trim();
+       if(string.length > maxLength){
+           result = string.substr(0,maxLength) + '...';
+    }else{
+        result = string;
+    }
 }
-
-switch (lang) {
-    case 'ru':
-        console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
-        break;
-    case 'en':
-        console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-        break;
-    default:
-        console.log('Непредвиденное значение!');
-}
-
-let langArr = [];
-langArr.ru = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-langArr.en = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-console.log(langArr[lang]);
-
-const langArray = {
-    ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-    en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+return result;
 };
-console.log(langArray[lang]);
-
-const namePerson = '';
-
-console.log((namePerson === 'Артем') ? 'директор' :
-    (namePerson === 'Максим') ? 'преподаватель' :
-    'студент');
+console.log("foo(): ", foo());
+console.log("foo(): ", foo("    Строка менее 30 символов     "));
+console.log(
+  "foo(): ",
+  foo("    Строка более 30 символов - Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
+);
