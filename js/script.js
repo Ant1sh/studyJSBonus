@@ -1,29 +1,58 @@
-'use strict';
+"use strict";
 
-/*
-1) Создать массив arr = []
-— Записать в него 7 любых многозначных чисел в виде строк
-— Вывести в консоль только те, что начинаются с цифры 2 или 4 (Должны присутствовать в массиве)
-*/
+const getRandomInt = function(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+};
 
-const arr = ['34567', '456789', '987654', '234567', '654321', '765432', '945678'];
+const isNum = function(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
 
-for (let i = 0; i < arr.length; i++) {
-    if (arr[i].startsWith('2') || arr[i].startsWith('4')) {
-        console.log(arr[i]);
+const start = function() {
+  let randomNumber = getRandomInt(100);
+  console.log("randomNumber: ", randomNumber);
+  let numberAttempts = 10;
+  const game = function() {
+    numberAttempts--;
+    if (numberAttempts < 0) {
+      if (confirm("Попытки закончились, хотите сыграть еще?")) {
+        start();
+      } else {
+        alert("До свидания");
+        return;
+      }
+    } else {
+      const num = prompt(
+        '"Угадай число от 1 до 100" (Для выхода оставьте строку пустой)'
+      );
+      if (num === null) {
+        alert("До свидания");
+        return;
+      }
+      if (isNum(num)) {
+        const realNum = +num;
+        if (realNum > randomNumber) {
+          alert(`Загаданное число меньше, осталось попыток: ${numberAttempts}`);
+          game();
+        } else if (realNum < randomNumber) {
+          alert(`Загаданное число больше, осталось попыток: ${numberAttempts}`);
+          game();
+        } else {
+          if (confirm("Поздравляю, Вы угадали!!! Хотели бы сыграть еще?")) {
+            start();
+          } else {
+            alert("До свидания");
+            return;
+          }
+        }
+      } else {
+        alert("Введите число");
+        game();
+      }
     }
-}
+  };
+  console.dir(game);
+  game();
+};
 
-/*
-2) Вывести в столбик все простые числа от 1 до 100
-*/
-
-let prime = document.getElementById("primeNum");
-primeNumber: for (var i = 2; i <= 100; i++) {
-  for (var j = 2; j < i; j++) {
-    if (i % j == 0) continue primeNumber;
-  }
-  console.log("простое :" + i + " " + " Делители этого числа: 1 и " + i);
-  prime.innerHTML +=
-    "простое: " + i + " " + " Делители этого числа: 1 и " + i + "<br>";
-}
+start();
