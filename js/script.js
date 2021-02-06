@@ -1,21 +1,29 @@
 'use strict';
 
-function foo(arg) {
-    let result = '...';
-    if (typeof arg === 'string'){
-       const maxLength = 30;
-       const string = arg.trim();
-       if(string.length > maxLength){
-           result = string.substr(0,maxLength) + '...';
-    }else{
-        result = string;
+/*
+1) Создать массив arr = []
+— Записать в него 7 любых многозначных чисел в виде строк
+— Вывести в консоль только те, что начинаются с цифры 2 или 4 (Должны присутствовать в массиве)
+*/
+
+const arr = ['3458', '456623', '9462953', '284673', '695863', '28758', '986453'];
+
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i].startsWith('2') || arr[i].startsWith('4')) {
+        console.log(arr[i]);
     }
 }
-return result;
-};
-console.log("foo(): ", foo());
-console.log("foo(): ", foo("    Строка менее 30 символов     "));
-console.log(
-  "foo(): ",
-  foo("    Строка более 30 символов - Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
-);
+
+/*
+2) Вывести в столбик все простые числа от 1 до 100
+*/
+
+let prime = document.getElementById("primeNum");
+primeNumber: for (var i = 2; i <= 100; i++) {
+  for (var j = 2; j < i; j++) {
+    if (i % j == 0) continue primeNumber;
+  }
+  console.log("простое :" + i + " " + " Делители этого числа: 1 и " + i);
+  prime.innerHTML +=
+    "простое: " + i + " " + " Делители этого числа: 1 и " + i + "<br>";
+}
